@@ -19,4 +19,4 @@
 
 
 ### SUMBER
-- Sumber data yang diambil dapat dilihat [disini.]("https://www.bi.go.id/id/moneter/informasi-kurs/transaksi-bi/Default.aspx")
+- Sumber data yang diambil dapat dilihat [disini.](https://www.bi.go.id/id/moneter/informasi-kurs/transaksi-bi/Default.aspx)
