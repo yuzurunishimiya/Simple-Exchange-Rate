@@ -16,3 +16,7 @@
     6. python3 main.py
 - On Windows
     - Belum Tersedia
+
+
+### SUMBER
+- Sumber data yang diambil dapat dilihat [disini.]("https://www.bi.go.id/id/moneter/informasi-kurs/transaksi-bi/Default.aspx")
