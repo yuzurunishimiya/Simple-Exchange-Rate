@@ -5,6 +5,8 @@
 - Pada Aplikasi ini juga kita bisa melakukan konversi, diantaranya:
     - Melihat perubahan selling rate dan buying rate untuk mata uang rupiah terhadap mata uang asing
     - Melakukan konversi dari mata uang asing terhadap rupiah, dan sebaliknya
+- Limitasi:
+    - Batas nilai yang dapat diterima adalah dalam nilai 100 billion (100,000,000,000.00)
 
 ### Instalasi
 - On Linux
