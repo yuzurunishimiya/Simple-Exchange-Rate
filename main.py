@@ -82,27 +82,24 @@ def convert_value(data=[], convert_val=1, chooise=0, rate_type=1):
 
 
 def set_menu() -> int:
-    question = """ PILIHAN MENU:
-    1. KELIPATAN VALUE TIAP MATA UANG
-    2. KONVERSI MATA UANG ASING DARI RUPIAH
-    3. KONVERSI MATA UANG ASING TERTENTU
-    Pilihan kamu: """
+    question = "Menu: \n1. MULTIPLE OF VALUE FOR EACH CURRENCY\n2. CONVERSIONS FOR EACH CURRENCY FROM INDONESIAN RUPIAH\n3. CONVERSION OF ONE FOREIGN CURRENCRY TO RUPIAH, VICE VERSA\n\
+    Your Chooise: "
     chooise = chooise_integer_strict(include=[1,2,3], question=question)
     return chooise
 
 
 def process_menu(chooise, data=[], dict_name=[]):
     if chooise == 1:
-        multiple = chooise_integer_strict(question="Nilai Kelipatan (ANGKA): ")
+        multiple = chooise_integer_strict(question="Multiple Value (on digits): ")
         new_data = convert_value(data=data, convert_val=multiple, chooise=1)
         return new_data
     elif chooise == 2:
-        question = """Pilihan Rate
-        1. Selling Rate
-        2. Buying Rate
-        Pilihan kamu: """
+        question = "Rate Options\n\
+        1. Selling Rate\n\
+        2. Buying Rate\n\
+            Your Chooise: "
         type_rate = chooise_integer_strict(include=[1,2], question=question)
-        idr_val = chooise_integer_strict(question="Masukkan nilai Rupiah (dalam angka tanpa koma): ")
+        idr_val = chooise_integer_strict(question="Insert value in IDR (without any comma or dot): ")
         if type_rate == 1:
             new_data = convert_value(data=data, convert_val=idr_val, chooise=2, rate_type=1)
         elif type_rate == 2:
@@ -111,10 +108,10 @@ def process_menu(chooise, data=[], dict_name=[]):
     elif chooise == 3:
         code = input("insert Code (example JPY or jpy): ").upper()
         if code in dict_name:
-            question = """Tipe Konversi
-            1. IDR to {0}
-            2. {0} to IDR
-            Pilihan kamu: """.format(code)
+            question = "Conversion Type\n\
+            1. IDR to {0}\n\
+            2. {0} to IDR\n\
+            Your Chooise: ".format(code)
             new_coll = {}
             for coll in data:
                 if coll["currency"] == code:
@@ -123,12 +120,12 @@ def process_menu(chooise, data=[], dict_name=[]):
             which_conversion = chooise_integer_strict(include=[1,2], question=question)
 
             if which_conversion == 1:
-                question = """Pilihan Rate
-                1. Selling Rate
-                2. Buying Rate
-                Pilihan kamu: """
+                question = "Rate Options\n\
+            1. Selling Rate\n\
+            2. Buying Rate\n\
+                Your Chooise: "
                 type_rate = chooise_integer_strict(include=[1,2], question=question)
-                idr_val = chooise_integer_strict(question="Masukkan nilai dalam Rupiah: ")
+                idr_val = chooise_integer_strict(question="insert value in IDR: ")
 
                 if type_rate == 1:
                     new_coll["value"] = idr_val*new_coll["value"] / new_coll["selling_rate"]
@@ -140,7 +137,7 @@ def process_menu(chooise, data=[], dict_name=[]):
                     new_coll["selling_rate"] = 0
 
             elif which_conversion == 2:
-                code_val = chooise_integer_strict(question="Masukkan nilai dalam {}: ".format(new_coll["currency"]))
+                code_val = chooise_integer_strict(question="Insert Value in {}: ".format(new_coll["currency"]))
                 new_coll["value"] = code_val
                 new_coll["buying_rate"] *= code_val
                 new_coll["selling_rate"] *= code_val
@@ -158,10 +155,10 @@ def main(json_data, collection_data):
     new_data = process_menu(chooise, data=collection_data, dict_name=json_data)
     printing_data(data=new_data, dict_name=json_data)
     print("\n"*2)
-    question = """Pilihan:
-    1. Ulangi
-    Press any to exit
-    Pilihan kamu: """
+    question = "Options:\n\
+    1. Repeat\n\
+    Press any to exit\n\
+    Your Chooise: "
     chooise = input(question)
     if chooise == "1":
         main(json_data=json_data, collection_data=collection_data)
